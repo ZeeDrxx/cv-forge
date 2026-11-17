@@ -1,0 +1,11 @@
+services:
+  cvforge:
+    build: .
+    image: cv-forge
+    working_dir: /work
+    volumes:
+      - .:/work
+      - tectonic-cache:/root/.cache/Tectonic   # TeX packages, downloaded once
+
+volumes:
+  tectonic-cache:

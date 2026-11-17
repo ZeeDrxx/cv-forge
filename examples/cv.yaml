@@ -1,0 +1,140 @@
+# Example CV Forge source. Every fact lives here once.
+# A string is used for every language; a {en: …, fr: …} mapping is translated.
+# `tags` limits an item to some variants; an item without tags appears everywhere.
+
+profile:
+  name: Sam Rivera
+  headline:
+    en: Software engineering student — data & backend
+    fr: Élève ingénieur logiciel — data & backend
+  email: sam.rivera@example.com
+  phone: "+33 6 00 00 00 00"
+  location: Lyon, France
+  links:
+    - { label: github.com/sam-rivera, url: "https://github.com/sam-rivera" }
+    - { label: sam-rivera.dev, url: "https://sam-rivera.dev" }
+
+variants:
+  general:
+    sections: [summary, experience, projects, education, skills, languages]
+  internship:          # end-of-studies internship (PFE) applications
+    headline:
+      en: Looking for a 6-month end-of-studies internship — from February 2027
+      fr: Recherche un stage de fin d'études de 6 mois — à partir de février 2027
+    sections: [summary, experience, projects, skills, education, languages]
+    limits: { projects: 3 }
+  masters:             # master's programme applications
+    headline:
+      en: Applying to MSc programmes in Data Science
+      fr: Candidature aux masters en science des données
+    sections: [summary, education, projects, experience, awards, languages]
+    languages: [en]
+
+sections:
+  summary:
+    kind: text
+    items:
+      - tags: [general]
+        text:
+          en: Engineering student who ships **end-to-end** products, from database schema to interface.
+          fr: Élève ingénieur qui livre des produits **de bout en bout**, du schéma de base à l'interface.
+      - tags: [internship]
+        text:
+          en: Backend and data engineer in training; two internships shipping production APIs. Available from February 2027.
+          fr: Ingénieur backend et data en formation ; deux stages à livrer des API en production. Disponible dès février 2027.
+      - tags: [masters]
+        text:
+          en: Final-year student aiming at research in time-series forecasting, with hands-on ML engineering experience.
+
+  experience:
+    kind: entries
+    items:
+      - title: { en: Backend Engineering Intern, fr: Stagiaire ingénieur backend }
+        org: Northwind Logistics
+        location: Lyon
+        start: 2026-06
+        end: 2026-09
+        bullets:
+          - en: Rebuilt the order API in **FastAPI**; p95 latency down from 480 ms to 120 ms.
+            fr: Refonte de l'API commandes en **FastAPI** ; latence p95 passée de 480 ms à 120 ms.
+          - en: Added contract tests (120 cases) that now gate every deploy — 100% of endpoints covered.
+            fr: Ajout de tests de contrat (120 cas) qui bloquent chaque déploiement — 100 % des endpoints couverts.
+        tech: [Python, FastAPI, PostgreSQL, Docker]
+      - title: { en: Data Analyst Intern, fr: Stagiaire analyste de données }
+        org: Café Lumière
+        location: Remote
+        start: 2025-07
+        end: 2025-08
+        tags: [general, internship]
+        bullets:
+          - en: Built a weekly sales dashboard from raw till exports; replaced 6 hours of manual work per week.
+            fr: Tableau de bord hebdomadaire des ventes à partir des exports de caisse ; 6 h de travail manuel économisées par semaine.
+        tech: [Pandas, SQL, Power BI]
+
+  projects:
+    kind: entries
+    items:
+      - title: CostPulse
+        note: { en: Open source, fr: Open source }
+        start: 2026
+        bullets:
+          - en: Price observatory that cleans public data and forecasts monthly inflation by city.
+            fr: Observatoire des prix qui nettoie des données publiques et prévoit l'inflation mensuelle par ville.
+        tech: [Django, Pandas, scikit-learn]
+      - title: CV Forge
+        start: 2026
+        bullets:
+          - en: Generates targeted LaTeX CVs in two languages from one YAML file — including this one.
+            fr: Génère des CV LaTeX ciblés en deux langues depuis un seul fichier YAML — y compris celui-ci.
+        tech: [Python, LaTeX, Docker]
+      - title: Snake_case linter
+        tags: [general]
+        start: 2025
+        bullets:
+          - Tiny linter for 100% snake_case identifiers & file names.
+      - title: { en: Demand forecasting thesis, fr: Mémoire — prévision de la demande }
+        tags: [masters, internship]
+        start: 2026
+        bullets:
+          - en: Compared gradient boosting and LSTM models on 3 years of retail data; MAPE 8.1% vs 9.4%.
+            fr: Comparaison gradient boosting / LSTM sur 3 ans de données retail ; MAPE 8,1 % contre 9,4 %.
+
+  education:
+    kind: entries
+    items:
+      - title: { en: Engineering degree — Computer Science, fr: Diplôme d'ingénieur — Informatique }
+        org: École d'Ingénieurs Exemple
+        location: Lyon
+        start: 2022
+        end: 2027
+        note: { en: "Major: Data Science & AI", fr: "Spécialité : Data Science & IA" }
+      - title: { en: Scientific baccalaureate, fr: Baccalauréat scientifique }
+        org: Lycée Exemple
+        end: 2022
+        tags: [general, masters]
+
+  awards:
+    kind: entries
+    heading: { en: Awards, fr: Distinctions }
+    items:
+      - title: { en: 1st place — campus innovation challenge, fr: 1re place — challenge innovation du campus }
+        end: 2026
+
+  skills:
+    kind: skills
+    items:
+      - group: { en: Languages, fr: Langages }
+        items: [Python, TypeScript, SQL, C]
+      - group: Frameworks
+        items: [Django, FastAPI, Next.js, React]
+      - group: Data & ML
+        items: [Pandas, NumPy, scikit-learn]
+      - group: { en: Tools, fr: Outils }
+        items: [Git, Docker, LaTeX, Linux]
+
+  languages:
+    kind: languages
+    items:
+      - { name: { en: French, fr: Français }, level: { en: native, fr: langue maternelle } }
+      - { name: { en: English, fr: Anglais }, level: { en: "fluent, C1", fr: "courant, C1" } }
+      - { name: { en: Spanish, fr: Espagnol }, level: { en: "intermediate, B1", fr: "intermédiaire, B1" } }
